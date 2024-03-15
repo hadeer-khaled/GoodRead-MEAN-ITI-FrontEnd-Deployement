@@ -1,0 +1,17 @@
+{
+  "routes": [
+    "/",
+    "/admin",
+    "/adminControlPage",
+    "/adminControlPage/add-admin",
+    "/adminControlPage/authorsTable",
+    "/adminControlPage/booksTable",
+    "/adminControlPage/categoriesTable",
+    "/authors",
+    "/books",
+    "/categories",
+    "/user",
+    "/userHome",
+    "/userSignUp"
+  ]
+}
