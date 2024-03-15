@@ -1,0 +1,65 @@
+.nav-link :hover {
+  color: rgb(236, 234, 234) !important;
+}
+
+.rounded {
+  border-radius: 10px !important;
+  width: 70px;
+  height: 50px;
+  margin: 2px;
+}
+
+ul li a:hover {
+  color: #143464;
+  font-weight: bold;
+}
+.active-link {
+  font-weight: bold;
+  color: #143464;
+  border-bottom: 2px solid #143464;
+}
+.search-input {
+  width: 400px;
+}
+.logout-btn {
+  border: 1px solid #143464;
+  color: #143464;
+}
+.logout-btn:hover {
+  background-color: #143464;
+  color: white;
+}
+.logout-btn:hover a {
+  color: white;
+  font-weight: normal;
+  background-color: #143464;
+}
+.search-container {
+  display: flex;
+  border: 1px solid gray;
+  border-radius: 60px !important;
+}
+.search-field {
+  outline: none;
+  border: none;
+  background-color: transparent !important;
+  border-radius: 60px !important;
+}
+.search-field:focus {
+  box-shadow: none;
+  background-color: transparent !important;
+  border-radius: 60px !important;
+}
+
+.search-btn {
+  /* border: 1px solid #ffc107; */
+  /* color: #ffc107; */
+  border: none;
+}
+.search-btn:hover {
+  /* background-color: #ffc107; */
+  color: #ffc107;
+  border-radius: 50%;
+}
+
+/* ------------------ */

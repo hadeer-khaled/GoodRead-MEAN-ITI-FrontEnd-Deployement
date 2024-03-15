@@ -1,0 +1,82 @@
+ngb-rating {
+  color: #ff9800 !important;
+  font-size: 1.4rem;
+}
+.img-div {
+  overflow: hidden;
+}
+img {
+  width: 250px !important;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+a {
+  text-decoration: none !important;
+}
+.author-name a,
+.genre-div a {
+  color: #666;
+}
+.right-bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+}
+.shelve-btn,
+.add-review-btn {
+  background-color: #143464;
+  color: white;
+}
+.shelve-btn:focus,
+.add-review-btn:focus {
+  background-color: white;
+  border: 1px solid #143464;
+  color: #143464;
+}
+.user-name-div {
+  padding: 0.2rem 0.5rem !important;
+}
+::ng-deep p-fieldset .p-fieldset-content {
+  padding: 0.2rem 0.5rem !important;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+  margin: 10px !important;
+}
+.rating:not(:checked) > input {
+  position: absolute;
+  appearance: none;
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  cursor: pointer;
+  font-size: 30px;
+  color: #666;
+}
+
+.rating:not(:checked) > label:before {
+  content: "★";
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #e58e09;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #ff9e0b;
+}
+
+.rating > input:checked ~ label {
+  color: #ffa723;
+}

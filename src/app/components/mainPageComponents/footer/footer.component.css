@@ -1,0 +1,29 @@
+footer {
+  /* background-image: linear-gradient(
+    to right top,
+    #dc8bb0,
+    #d97fa8,
+    #d5739f,
+    #d26797,
+    #ce5a8e,
+    #c75186,
+    #c1487f,
+    #ba3f77,
+    #af396f,
+    #a43366,
+    #992d5e,
+    #8e2756
+  ); */
+  background-color: #143464;
+  color: white;
+}
+ul {
+  list-style: none;
+}
+ul li {
+  margin-bottom: 10px;
+}
+h3 {
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+}

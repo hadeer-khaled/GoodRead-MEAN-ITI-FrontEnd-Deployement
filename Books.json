@@ -1,0 +1,43 @@
+{
+  "Books": [
+    {
+      "bookID": 1,
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "authorID": "3",
+      "category": "Fiction",
+      "categoryID": "5",
+      "description": "A classic novel about the struggles of adolescence.",
+      "rating": 4.5,
+      "bookReviews": 120,
+      "cover": "book5.jpg",
+      "shelve": "read"
+    },
+    {
+      "bookID": 2,
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "authorID": "5",
+      "category": "Fiction",
+      "categoryID": "6",
+      "description": "A compelling novel addressing racial injustice in the American South.",
+      "rating": 4.8,
+      "bookReviews": 150,
+      "cover": "book2.jpg",
+      "shelve": "want to read"
+    },
+    {
+      "bookID": 3,
+      "title": "1984",
+      "author": "George Orwell",
+      "authorID": "6",
+      "category": "Dystopian",
+      "categoryID": "2",
+      "description": "A dystopian novel depicting a totalitarian future society.",
+      "rating": 4.7,
+      "bookReviews": 130,
+      "cover": "book3.jpg",
+      "shelve": "reading"
+    }
+  ]
+}

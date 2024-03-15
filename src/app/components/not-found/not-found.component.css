@@ -1,0 +1,21 @@
+#div1 {
+background-image: url(https://static.vecteezy.com/system/resources/previews/022/418/891/non_2x/cartoon-books-textbook-and-bestsellers-stacks-vector.jpg);
+    margin-top: 60px;
+}
+.page-wrap {
+    min-height: 80vh;
+}
+
+.img2{
+    margin-left: -500px;
+}
+.status{
+    color: red;
+    font-weight: bolder;
+    font-size: 100px;
+    margin-left: -50px;
+}
+.message{
+margin-top: 40px;
+margin-left: -20px;
+}

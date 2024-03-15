@@ -1,0 +1,13 @@
+<app-user-nav-bar></app-user-nav-bar>
+
+<div class="container mt-4">
+  <div class="row">
+    @for (category of categories; track category.id) {
+    <div class="col col-lg-3 col-md-4 d-flex outer-div mb-3">
+      <div class="inner-div w-100">
+        <app-catergory-card [categoryItem]="category"></app-catergory-card>
+      </div>
+    </div>
+    }
+  </div>
+</div>

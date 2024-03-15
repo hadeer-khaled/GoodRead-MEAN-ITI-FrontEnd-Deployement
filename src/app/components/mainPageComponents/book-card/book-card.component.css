@@ -1,0 +1,16 @@
+p {
+  color: gray;
+}
+.card {
+  box-shadow: 1px 1px 4px 0px #9e9e9e;
+}
+.img-div {
+  overflow: hidden;
+}
+img {
+  height: 300px;
+  transition: 0.5s;
+}
+img:hover {
+  transform: scale(1.2);
+}

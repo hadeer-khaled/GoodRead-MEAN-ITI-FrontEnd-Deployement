@@ -1,0 +1,174 @@
+<app-user-nav-bar></app-user-nav-bar>
+<div class="container mt-4 flex-column">
+  <div class="row author-card">
+    <div class="img-div col col-lg-4">
+      <img
+        [src]="
+          'https://goodread-mean-iti-backendpart-3.onrender.com/images/authors/' +
+          author.image
+        "
+        alt="author image"
+      />
+    </div>
+
+    <div class="right col col-lg-6 mt-2">
+      <div class="author-details mb-3">
+        <h2 class="mb-2">{{ author.fullName }}</h2>
+        <span style="color: gray">Date of birth: {{ author.dob }}</span>
+      </div>
+      <p style="line-height: 1.5" class="mb-2">{{ author.description }}</p>
+    </div>
+  </div>
+  <p class="border-black text-info-emphasis fs-5 fst-italic mt-4">
+    {{ author.fullName }} Books
+  </p>
+  <!-- <hr /> -->
+  <div>
+    @for (book of books; track $index) {
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="card my-3" style="width: 18rem">
+          <div class="img-div">
+            <a>
+              <img
+                [src]="
+                  'https://goodread-mean-iti-backendpart-3.onrender.com/images/books/' +
+                  book.image
+                "
+                class="card-img-top"
+                alt="..."
+              />
+            </a>
+          </div>
+          <div class="card-body">
+            <div
+              class="d-flex flex-column align-items-center justify-content-center"
+            >
+              <h4 class="text-center">
+                <a
+                  routerLink="/books/book/{{ book.id }}/{{ book.title }}"
+                  class="card-title"
+                  >{{ book.title }}</a
+                >
+              </h4>
+              <p>
+                <a
+                  routerLink="/authors/author/{{ book.author._id }}/{{
+                    book.author.firstName + '' + book.author.lastName
+                  }}"
+                  >{{ book.author.firstName }} {{ book.author.lastName }}</a
+                >
+              </p>
+              <div style="display: flex; align-items: center">
+                <ngb-rating
+                  [rate]="
+                    calculateAverageRating(book.totalRating, book.countOfRating)
+                  "
+                  [readonly]="readonly"
+                  [max]="5"
+                />
+                <span style="font-size: 0.8rem" class="mx-2"
+                  >{{ book.countOfRating }} ratings</span
+                >
+              </div>
+
+              <div class="right-bottom">
+                <div ngbDropdown>
+                  <button
+                    type="button"
+                    class="btn shelve-btn px-3 mt-4 rounded-pill"
+                    id="dropdownBasic1"
+                    ngbDropdownToggle
+                  >
+                    {{ shelve }}
+                  </button>
+
+                  <div
+                    ngbDropdownMenu
+                    aria-labelledby="dropdownBasic1"
+                    class="ngbDropdownMenu p-2"
+                  >
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        (click)="onDropdownItemClicked(book._id, 'read')"
+                        >read</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        (click)="
+                          onDropdownItemClicked(book._id, 'want to read')
+                        "
+                        >want to read</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        (click)="onDropdownItemClicked(book._id, 'reading')"
+                        >reading</a
+                      >
+                    </li>
+                  </div>
+                </div>
+                <!-- <div style="display: flex; align-items: center" class="mx-3">
+                  <span style="display: flex; align-items: center">
+                    <div class="rating">
+                      <input
+                        value="5"
+                        name="rate"
+                        id="star5"
+                        type="radio"
+                        (change)="onRatingChange(book._id, 5)"
+                      />
+                      <label title="text" for="star5"></label>
+
+                      <input
+                        value="4"
+                        name="rate"
+                        id="star4"
+                        type="radio"
+                        (change)="onRatingChange(book._id, 4)"
+                      />
+                      <label title="text" for="star4"></label>
+
+                      <input
+                        value="3"
+                        name="rate"
+                        id="star3"
+                        type="radio"
+                        (change)="onRatingChange(book._id, 3)"
+                      />
+                      <label title="text" for="star3"></label>
+
+                      <input
+                        value="2"
+                        name="rate"
+                        id="star2"
+                        type="radio"
+                        (change)="onRatingChange(book._id, 2)"
+                      />
+                      <label title="text" for="star2"></label>
+
+                      <input
+                        value="1"
+                        name="rate"
+                        id="star1"
+                        type="radio"
+                        (change)="onRatingChange(book._id, 1)"
+                      />
+                      <label title="text" for="star1"></label>
+                    </div>
+                  </span>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

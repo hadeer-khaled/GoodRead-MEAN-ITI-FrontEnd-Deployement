@@ -1,0 +1,238 @@
+<section style="background-color: #f3faff">
+  <div class="container pt-4">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black">
+          <div
+            class="card-body p-md-5 py-md-3 rounded-2"
+            style="background-color: #f3faff"
+          >
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <p class="text-center h1 fw-bold my-3 mx-md-4 mt-2">Sign up</p>
+                <form [formGroup]="SignUpForm" (ngSubmit)="handleFormSubmit()">
+                  <!--  --------------------- First Name  ----------------------->
+                  <div class="d-flex flex-row align-items-center mb-3">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div class="form-floating flex-fill mb-0">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="firstName"
+                        formControlName="firstName"
+                        placeholder="Hadeer"
+                      />
+                      <label for="firstName" class="form-label"
+                        >First Name</label
+                      >
+                      @if(SignUpForm.controls['firstName'].invalid &&
+                      SignUpForm.controls['firstName'].touched){
+                      <div class="form-text text-danger">
+                        @if(SignUpForm.controls['firstName'].errors?.['required']){
+                        <small>First name is required</small>
+                        }
+                        @if(SignUpForm.controls['firstName'].errors?.['pattern']){
+                        <small>First name consists of letters only</small>
+                        }
+                        @if(SignUpForm.controls['firstName'].errors?.['maxlength']){
+                        <small
+                          >First name has max length of 20 letters only</small
+                        >
+                        }
+                        @if(SignUpForm.get('firstName')?.hasError('cannotContainSpace')){
+                        <small>First name should not contain spaces.</small>
+                        }
+                      </div>
+                      }
+                    </div>
+                  </div>
+                  <!--  --------------------- Last Name  ----------------------->
+                  <div class="d-flex flex-row align-items-center mb-3">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div class="form-floating flex-fill mb-0">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="lastName"
+                        formControlName="lastName"
+                        placeholder="Khaled"
+                      />
+                      <label for="lastName" class="form-label">Last Name</label>
+                      @if(SignUpForm.controls['lastName'].invalid &&
+                      SignUpForm.controls['lastName'].touched){
+                      <div class="form-text text-danger">
+                        @if(SignUpForm.controls['lastName'].errors?.['required']){
+                        <small>Last name is required</small>
+                        }
+                        @if(SignUpForm.controls['lastName'].errors?.['pattern']){
+                        <small>Last name consists of letters only</small>
+                        }
+                        @if(SignUpForm.controls['lastName'].errors?.['maxlength']){
+                        <small
+                          >Last name has max length of 20 letters only</small
+                        >
+                        }@if(SignUpForm.get('lasttName')?.hasError('cannotContainSpace')){
+                        <small>Last name should not contain spaces.</small>
+                        }
+                      </div>
+                      }
+                    </div>
+                  </div>
+                  <!--  --------------------- Email  ----------------------->
+                  <div class="d-flex flex-row align-items-center mb-3">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-floating flex-fill mb-0">
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        formControlName="email"
+                        placeholder="hadeerkhaled@gmail.com"
+                      />
+                      <label for="email" class="form-label"
+                        >Email address</label
+                      >
+                      @if(SignUpForm.controls['email'].invalid &&
+                      SignUpForm.controls['email'].touched){
+                      <div id="emailHelp" class="form-text text-danger">
+                        @if(SignUpForm.controls['email'].errors?.['required']){
+                        <small>Email is required</small>
+                        } @if(SignUpForm.controls['email'].errors?.['email']){
+                        <small>Invalid email format.</small>
+                        }
+                      </div>
+                      }
+                    </div>
+                  </div>
+                  <!--  --------------------- Password  ----------------------->
+                  <div class="d-flex flex-row align-items-center mb-3">
+                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <div class="form-floating flex-fill mb-0">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        formControlName="password"
+                        placeholder="Abcdef123$"
+                      />
+                      <label for="password" class="form-label">Password</label>
+                      @if(SignUpForm.controls['password'].invalid &&
+                      SignUpForm.controls['password'].touched){
+                      <div id="emailHelp" class="form-text text-danger">
+                        @if(SignUpForm.controls['password'].errors?.['required']){
+                        <small>This field is required <br /></small>
+                        } @else if
+                        ("SignUpForm.get('password')?.value.match('^(?=.*[A-Z])')
+                        !== null") {
+                        <small
+                          >At least one uppercase letter required <br
+                        /></small>
+                        }@else if
+                        ("SignUpForm.get('password')?.value.match('(?=.*[a-z])')
+                        !== null"){
+                        <small
+                          >At least one lowercase letter required<br
+                        /></small>
+                        }@else if
+                        ("SignUpForm.get('password')?.value.match('(?=.*[!@#$%^&*])')
+                        !== null") {
+                        <small
+                          >At least one special character required<br
+                        /></small>
+                        } @else if
+                        ("SignUpForm.get('password')?.value.match('.{8,}') !==
+                        null") {
+                        <small>At least 8 characters required<br /></small>
+                        }
+                      </div>
+                      }
+                    </div>
+                  </div>
+                  <!--  --------------------- Confirm Password  ----------------------->
+                  <div class="d-flex flex-row align-items-center mb-3">
+                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                    <div class="form-floating flex-fill mb-0">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="rePassword"
+                        formControlName="rePassword"
+                        placeholder="Abcdef123"
+                      />
+                      <label for="rePassword" class="form-label">
+                        Re-type your Password</label
+                      >
+
+                      @if(SignUpForm.controls['rePassword'].invalid &&
+                      SignUpForm.controls['rePassword'].touched) {
+                      <div id="emailHelp" class="form-text text-danger">
+                        <small>Password mismatch</small>
+                      </div>
+                      }
+                    </div>
+                  </div>
+
+                  <!--  --------------------- Image  ----------------------->
+                  <div class="d-flex flex-row align-items-center mb-3">
+                    <i
+                      class="fa-solid fa-upload me-3 fa-fw"
+                      style="font-size: 1.2rem"
+                    ></i>
+                    <div class="form-floating flex-fill mb-0">
+                      <input
+                        type="file"
+                        class="form-control"
+                        id="image"
+                        name="image"
+                        formControlName="image"
+                        (change)="onImageSelected($event)"
+                      />
+                      <!-- <label for="image" class="form-label"
+                        >Upload your image</label
+                      > -->
+                      @if(SignUpForm.controls['image'].invalid &&
+                      SignUpForm.controls['image'].touched){
+                      <div class="form-text text-danger">
+                        @if(SignUpForm.controls['image'].errors?.['required']){
+                        <small>Image is required</small>
+                        }
+                      </div>
+                      }
+                    </div>
+                  </div>
+                  <!--  --------------------- Submit  ----------------------->
+                  <div class="d-flex justify-content-center mx-2 mb-1 mb-lg-2">
+                    <button
+                      type="submit"
+                      class="btn"
+                      [disabled]="
+                        !(
+                          SignUpForm.controls['firstName'].valid &&
+                          SignUpForm.controls['lastName'].valid &&
+                          SignUpForm.controls['email'].valid &&
+                          SignUpForm.controls['password'].valid &&
+                          SignUpForm.controls['rePassword'].valid
+                        )
+                      "
+                    >
+                      Register
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div
+                class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
+              >
+                <img
+                  src="../../../assets/images/read1.jpg"
+                  class="img-fluid"
+                  alt="Sample image"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

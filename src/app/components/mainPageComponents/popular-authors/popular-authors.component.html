@@ -1,0 +1,14 @@
+<div class="container my-5">
+  <h2 class="my-5 text-center">Most Popular Authors</h2>
+  <div class="row g-4 mb-5">
+    @for(author of authors ; track author.id){
+    <div class="col-lg-4 col-md-6">
+      <app-author-card
+        [authorName]="author.firstName"
+        [authorImage]="author.image"
+      >
+      </app-author-card>
+    </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,22 @@
+.btn{
+    background-color: rgb(121, 123, 241);
+    padding: 10px;
+    width: 120px;
+    color: white;
+}
+.container{
+    background-color: rgb(121, 123, 241);
+    margin-top: 30px;
+}
+.fa{
+    color:rgb(121, 123, 241);
+}
+label{
+    margin-right: 10px;
+}
+input {
+    width: 250px;
+}
+p{
+    color:rgb(121, 123, 241);
+}

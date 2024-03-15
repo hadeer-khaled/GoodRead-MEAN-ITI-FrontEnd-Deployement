@@ -1,0 +1,89 @@
+<app-user-nav-bar></app-user-nav-bar>
+<div class="container py-2">
+  <h2 id="pageHeaderTitle" *ngIf="categoryName">{{ categoryName }}</h2>
+
+  <div class="row">
+    <!-- <div class="col-md-6" *ngFor="let book of books; let i = index">
+      <div class="postcard">
+        <img
+          class="postcard__img"
+          *ngIf="book.image"
+          class="books-img"
+          [src]="
+            'https://goodread-mean-iti-backendpart-3.onrender.com/images/books/' +
+            book.image
+          "
+        />
+        <div class="postcard__text t-dark">
+          <h3 id="postcard__title" class="blue">
+            <a href="#">{{ book.title }}</a>
+          </h3>
+          <div id="postcard__subtitle" class="small">
+            <h6>
+              <a href="#"
+                >{{ book.author.firstName }} {{ book.author.lastName }}</a
+              >
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div
+      class="col col-lg-3 col-md-4 d-flex outer-div mb-3"
+      *ngFor="let book of books; let i = index"
+    >
+      <div class="inner-div w-100">
+        <!-- <div class="postcard">
+          <img
+            class="postcard__img"
+            *ngIf="book.image"
+            class="books-img"
+            [src]="
+              'https://goodread-mean-iti-backendpart-3.onrender.com/images/books/' +
+              book.image
+            "
+          />
+          <div class="postcard__text t-dark">
+            <h3 id="postcard__title" class="blue">
+              <a href="#">{{ book.title }}</a>
+            </h3>
+            <div id="postcard__subtitle" class="small">
+              <h6>
+                <a href="#"
+                  >{{ book.author.firstName }} {{ book.author.lastName }}</a
+                >
+              </h6>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="card">
+          <img
+            class="postcard__img"
+            *ngIf="book.image"
+            class="books-img"
+            [src]="
+              'https://goodread-mean-iti-backendpart-3.onrender.com/images/books/' +
+              book.image
+            "
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ book.title }}</h5>
+            <h6 class="card-title" style="color: gray">
+              {{ book.author.firstName }} {{ book.author.lastName }}
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ngb-pagination
+    class="ngb-pagination"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [collectionSize]="booksCount"
+    (pageChange)="onPageChange()"
+    aria-label="Default pagination"
+  />
+</div>

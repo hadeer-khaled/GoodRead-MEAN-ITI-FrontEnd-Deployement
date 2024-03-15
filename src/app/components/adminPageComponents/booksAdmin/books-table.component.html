@@ -1,0 +1,327 @@
+<div class="container mt-3">
+  <div class="table-add-container d-flex flex-column w-100">
+    <button
+      class="btn btn-sm add-btn rounded-circle mb-2 align-self-end"
+      (click)="open(content)"
+    >
+      <i class="fa-solid fa-plus fw-bold"></i>
+    </button>
+
+    <table class="table rounded-corners" style="width: 100%">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 5%">ID</th>
+          <th scope="col">Photo</th>
+          <th scope="col">Name</th>
+          <th scope="col">CategryID</th>
+          <th scope="col">AuthorID</th>
+          <th scope="col" style="width: 10%">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (book of books ; track $index){
+        <tr>
+          <th scope="row">{{ book.id }}</th>
+          <td>
+            <img
+              class="books-img"
+              [src]="'https://goodread-mean-iti-backendpart-3.onrender.com/images/books/' + book.image"
+            />
+          </td>
+          <td>{{ book.title }}</td>
+          <td>{{ book.category.id }}</td>
+          <td>{{ book.author.id }}</td>
+
+          <td>
+            <button
+              class="btn btn-sm btn-trach border-0 mx-2"
+              (click)="deleteBookModal(book, deleteModal)"
+            >
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+            <button
+              class="btn btn-sm btn-edit border-0 mx-2"
+              (click)="editBook(book, editBookmodal)"
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add book</h4>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      ></button>
+    </div>
+
+    <div class="modal-body">
+      <form
+        [formGroup]="bookForm"
+        (ngSubmit)="[getNewBookName(), modal.close('Save click')]"
+      >
+        <!-- Book Name -->
+        <div class="mb-3">
+          <label for="bookName" class="mb-2">Book Name</label>
+          <div class="input-group">
+            <input
+              id="bookName"
+              class="form-control"
+              placeholder="ex: Fantasy"
+              name="newBookName"
+              formControlName="newBookName"
+            />
+          </div>
+          @if(bookForm.controls['newBookName'].invalid &&
+          bookForm.controls['newBookName'].touched){
+          <div class="form-text text-danger">
+            @if(bookForm.controls['newBookName'].errors?.['required']){
+            <small>Book name is required</small>
+            } @if(bookForm.controls['newBookName'].errors?.['maxlength']){
+            <small>Book name should be less than 25 letters.</small>
+            }
+          </div>
+          }
+        </div>
+        <!-- Category Name -->
+        <div class="mb-3">
+          <label for="bookCategory" class="mb-2">Category</label>
+          <div class="input-group">
+            <select
+              id="bookCategory"
+              class="form-select form-select-lg mb-3"
+              name="newBookCategoryID"
+              formControlName="newBookCategoryID"
+              aria-label=".form-select-lg example"
+            >
+              @for( category of categories ; track category.id){
+              <option value="{{ category._id }}">
+                {{ category.name }}
+              </option>
+              }
+            </select>
+          </div>
+          @if(bookForm.controls['newBookCategoryID'].invalid &&
+          bookForm.controls['newBookCategoryID'].touched){
+          <div class="form-text text-danger">
+            @if(bookForm.controls['newBookCategoryID'].errors?.['required']){
+            <small>Category name is required</small>
+            }
+          </div>
+          }
+        </div>
+        <!-- Author Name -->
+        <div class="mb-3">
+          <label for="bookAuthor" class="mb-2">Author</label>
+          <div class="input-group">
+            <select
+              id="bookAuthor"
+              class="form-select form-select-lg mb-3"
+              name="newAuthorID"
+              formControlName="newAuthorID"
+              aria-label=".form-select-lg example"
+            >
+              @for( author of authors ; track author.id){
+              <option value="{{ author._id }}">
+                {{ author.firstName }}
+              </option>
+              }
+            </select>
+          </div>
+          @if(bookForm.controls['newAuthorID'].invalid &&
+          bookForm.controls['newAuthorID'].touched){
+          <div class="form-text text-danger">
+            @if(bookForm.controls['newAuthorID'].errors?.['required']){
+            <small>Author name is required</small>
+            }
+          </div>
+          }
+        </div>
+        <!-- Description -->
+        <div class="mb-3">
+          <label for="describtion" class="mb-2">Describtion</label>
+          <div class="input-group">
+            <textarea
+              id="describtion"
+              class="form-control"
+              placeholder="describtion"
+              name="describtion"
+              formControlName="describtion"
+            ></textarea>
+          </div>
+          @if(bookForm.controls['describtion'].invalid &&
+          bookForm.controls['describtion'].touched){
+          <div class="form-text text-danger">
+            @if(bookForm.controls['describtion'].errors?.['required']){
+            <small>Describtion is required</small>
+            }
+          </div>
+          }
+        </div>
+        <!--  --------------------- Image  ----------------------->
+        <div class="mb-3">
+          <label for="image" class="mb-2">Book Cover</label>
+          <div class="input-group">
+            <input
+              type="file"
+              class="form-control"
+              id="image"
+              name="image"
+              formControlName="image"
+              (change)="onImageSelected($event)"
+            />
+
+            @if(bookForm.controls['image'].invalid &&
+            bookForm.controls['image'].touched){
+            <div class="form-text text-danger">
+              @if(bookForm.controls['image'].errors?.['required']){
+              <small>Image is required</small>
+              }
+            </div>
+            }
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="submit"
+            class="btn btn-outline-dark add-confirm-btn"
+            [disabled]="
+              !(
+                bookForm.controls['newBookName'].valid &&
+                bookForm.controls['newBookCategoryID'].valid &&
+                bookForm.controls['newAuthorID'].valid
+              )
+            "
+          >
+            Add book
+          </button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+
+  <!------------edit---------------->
+
+  <ng-template #editBookmodal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Edit Book</h4>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="editBookForm" (ngSubmit)="updatebook()">
+        <div class="mb-3">
+          <label for="title" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            name="title"
+            formControlName="title"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="editbookCategoryID" class="mb-2">Category</label>
+          <div class="input-group">
+            <select
+              id="editbookCategoryID"
+              class="form-select form-select-lg mb-3"
+              name="editbookCategoryID"
+              formControlName="editbookCategoryID"
+              aria-label=".form-select-lg example"
+            >
+              @for( category of categories ; track category.id){
+              <option value="{{ category._id }}">
+                {{ category.name }}
+              </option>
+              }
+            </select>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="editbookauthorID" class="form-label">Author</label>
+          <select
+            id="editbookauthorID"
+            class="form-select form-select-lg mb-3"
+            name="editbookauthorID"
+            formControlName="editbookauthorID"
+          >
+            @for( author of authors ; track author.id){
+            <!-- [selected]="author.firstName + '' + author.lastName === editBookForm.get('editbookauthorID')?.value -->
+            <option value="{{ author._id }}">
+              {{ author.firstName + " " + author.lastName }}
+            </option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="editdescribtion" class="mb-2">Describtion</label>
+          <div class="input-group">
+            <textarea
+              id="editdescribtion"
+              class="form-control"
+              name="editdescribtion"
+              formControlName="editdescribtion"
+            >
+            </textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-outline-dark add-confirm-btn">
+            <!-- [disabled]="editBookForm.invalid" -->
+            Save Changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+
+  <!-- delete modal -->
+  <ng-template #deleteModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Delete Category</h4>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <p>Are you sure you want to delete this Book?</p>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-outline-dark add-confirm-btn"
+        (click)="deleteBook()"
+      >
+        Delete Book
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-dark add-confirm-btn"
+        (click)="modal.dismiss('Cross click')"
+      >
+        cancel
+      </button>
+    </div>
+  </ng-template>
+
+  <!-- <pre>{{ closeResult }}</pre> -->
+</div>

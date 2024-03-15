@@ -1,0 +1,22 @@
+.card {
+  width: 95%;
+  border: none;
+  /* background-color: brown; */
+  /* border-radius: 40px; */
+}
+.card-body {
+  flex-direction: row;
+  display: flex;
+  align-items: baseline;
+}
+button:focus {
+  border: none;
+}
+button i {
+  cursor: pointer;
+  font-size: 1.2rem;
+  /* text-shadow: 1px 1px 10px #9e9e9ebf; */
+}
+button i:hover {
+  text-shadow: 1px 1px 10px #ff9800;
+}

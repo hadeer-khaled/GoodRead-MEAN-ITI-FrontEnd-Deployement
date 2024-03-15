@@ -1,0 +1,30 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+:root {
+  --body-bg: #faf3e1;
+  --gray: #373735;
+  --baby-blue: #9bd3d0;
+  --blue: #2d3e56;
+  --royal-blue: #22ac94;
+  --royal-green: #143464;
+  --light-pink: #feccb5;
+  --beige: #efebe0;
+  --light-orange: #fec447;
+  --foshia: #e41c77;
+  --blue-blue: #0065a8;
+}
+body {
+  background-color: white !important;
+  position: relative;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

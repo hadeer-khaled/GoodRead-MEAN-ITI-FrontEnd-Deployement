@@ -1,0 +1,13 @@
+<div class="card">
+  <img
+    src="./../../../../../assets/images/genre.jpg"
+    alt="Category Image"
+    class="category-card-img"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ categoryItem.name }}</h5>
+    <button class="btn btn1" (click)="redirectToDetails(categoryItem._id)">
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+:root {
+  --body-bg: #faf3e1;
+  --gray: #373735;
+  --baby-blue: #9bd3d0;
+  --blue: #2d3e56;
+  --royal-blue: #22ac94;
+  --royal-green: #143464;
+  --light-pink: #feccb5;
+  --beige: #efebe0;
+  --light-orange: #fec447;
+  --heavy-orange: #ff9800;
+  --foshia: #e41c77;
+  --blue-blue: #0065a8;
+}
+.ngbDropdownMenu {
+  z-index: 2;
+}
+.shelve-btn {
+  border: 1px solid #000080;
+  color: #000080;
+}
+.shelve-btn:hover {
+  /* border: 1px solid #000080; */
+  background-color: #000080;
+  color: white;
+}
+:host ::ng-deep p-table thead tr {
+  background-color: #f0f0f04a;
+  color: #333;
+  font-weight: bold;
+}
+
+table {
+  border-collapse: collapse;
+  box-shadow: 0px 1px 8px 3px #bdbdbd9e;
+}
+ngb-rating {
+  color: #ff9800 !important;
+  font-size: 20px !important;
+}
+:host ::ng-deep .ngb-pagination .pagination {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+:host ::ng-deep .ngb-pagination .pagination .page-item .page-link {
+  border-radius: 50% !important;
+  border: 1px solid var(--royal-green);
+  margin-right: 10px;
+}
+:host ::ng-deep .ngb-pagination .pagination li.active .page-link {
+  border-radius: 50% !important;
+  background-color: #ffc107 !important;
+  border: 1px solid #ffc107;
+  margin-right: 10px;
+}
+
+:host ::ng-deep .ngb-pagination .pagination .page-item .page-link span {
+  font-size: 1.2rem;
+}
+:host ::ng-deep .ngb-pagination .pagination .page-item:last-child .page-link,
+:host ::ng-deep .ngb-pagination .pagination .page-item:first-child .page-link {
+  background-color: var(--royal-green) !important;
+  border: 1px solid var(--royal-green);
+  color: white;
+}
+:host ::ng-deep .ngb-pagination .pagination li.disabled .page-link {
+  color: gray !important;
+}
+img {
+  width: 90px;
+}

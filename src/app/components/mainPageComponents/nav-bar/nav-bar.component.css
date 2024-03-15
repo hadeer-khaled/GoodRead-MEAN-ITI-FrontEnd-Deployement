@@ -1,0 +1,38 @@
+.nav-link :hover {
+  color: rgb(236, 234, 234) !important;
+}
+nav {
+  background-color: #f3faff !important;
+}
+img {
+  width: 13%;
+}
+a:hover {
+  color: #0302c8;
+  font-weight: bold;
+}
+.signup-btn {
+  border: 1px solid #e41c77;
+  color: #e41c77;
+}
+.signup-btn:hover {
+  background-color: #e41c77;
+}
+.signup-btn:hover a {
+  color: white;
+  font-weight: normal;
+  background-color: #e41c77;
+}
+.ngbDropdownMenu {
+  background-color: transparent;
+}
+@media (max-width: 767px) {
+  img {
+    width: 40%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  img {
+    width: 31%;
+  }
+}

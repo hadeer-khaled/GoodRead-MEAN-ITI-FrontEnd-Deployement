@@ -1,0 +1,39 @@
+:root {
+  --body-bg: #faf3e1;
+  --gray: #373735;
+  --baby-blue: #9bd3d0;
+  --blue: #2d3e56;
+  --royal-blue: #22ac94;
+  --royal-green: #143464;
+  --light-pink: #feccb5;
+  --beige: #efebe0;
+  --light-orange: #fec447;
+  --foshia: #e41c77;
+  --blue-blue: #0065a8;
+}
+.container div.row {
+  background-color: #f3faff;
+  height: 100vh;
+}
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+img {
+  width: 80%;
+}
+@media (max-width: 991px) {
+  .container div.row {
+    background-color: #f3faff;
+    height: inherit;
+    flex-direction: column-reverse;
+  }
+  div.left {
+    text-align: center;
+  }
+  img {
+    width: 50%;
+  }
+}

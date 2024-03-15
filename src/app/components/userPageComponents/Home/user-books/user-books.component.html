@@ -1,0 +1,122 @@
+<div>
+  <div class="card">
+    <p-table [value]="books" [tableStyle]="{ 'min-width': '60rem' }">
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="cover" style="width: 10%">Cover</th>
+          <th [pSortableColumn]="'idOfBook.title'" style="width: 20%">
+            Name <p-sortIcon field="idOfBook.title"></p-sortIcon>
+          </th>
+          <th
+            [pSortableColumn]="'idOfBook.author.firstName'"
+            style="width: 20%"
+          >
+            Author <p-sortIcon field="idOfBook.author.firstName"></p-sortIcon>
+          </th>
+          <th [pSortableColumn]="'idOfBook.totalRating'" style="width: 20%">
+            Avg Rate <p-sortIcon field="idOfBook.totalRating"></p-sortIcon>
+          </th>
+          <th [pSortableColumn]="'rating'" style="width: 20%">
+            Rating <p-sortIcon field="rating"></p-sortIcon>
+          </th>
+          <th style="width: 40%">Shelve</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-book>
+        <tr>
+          <td>
+            <img
+              [src]="
+                'https://goodread-mean-iti-backendpart-3.onrender.com/images/books/' +
+                book.idOfBook.image
+              "
+              alt="Book Cover"
+            />
+          </td>
+
+          <td>{{ book.idOfBook.title }}</td>
+
+          <td>
+            {{ book.idOfBook.author.firstName }}
+            {{ book.idOfBook.author.lastName }}
+          </td>
+
+          <td>
+            <ngb-rating
+              [rate]="
+                calculateAverageRating(
+                  book.idOfBook.totalRating,
+                  book.idOfBook.countOfRating
+                )
+              "
+              [readonly]="readonly"
+              [max]="5"
+            />
+          </td>
+
+          <td>
+            <ngb-rating
+              [(rate)]="book.rating"
+              [readonly]="readonly"
+              [max]="5"
+            />
+          </td>
+
+          <td>
+            <div ngbDropdown class="d-inline-block login-btn mx-2">
+              <button
+                type="button"
+                class="btn shelve-btn rounded-pill"
+                id="dropdownBasic1"
+                ngbDropdownToggle
+              >
+                {{ book.shelf }}
+              </button>
+
+              <div
+                ngbDropdownMenu
+                aria-labelledby="dropdownBasic1"
+                class="ngbDropdownMenu p-2"
+              >
+                <li>
+                  <a
+                    class="dropdown-item"
+                    (click)="onDropdownItemClicked(book.idOfBook._id, 'read')"
+                    >read</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    (click)="
+                      onDropdownItemClicked(book.idOfBook._id, 'want to read')
+                    "
+                    >want to read</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    (click)="
+                      onDropdownItemClicked(book.idOfBook._id, 'reading')
+                    "
+                    >reading</a
+                  >
+                </li>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <ngb-pagination
+    class="ngb-pagination mx-4"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [collectionSize]="booksLength"
+    (pageChange)="onPageChange()"
+    aria-label="Default pagination"
+  />
+</div>

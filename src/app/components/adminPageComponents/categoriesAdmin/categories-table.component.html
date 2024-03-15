@@ -1,0 +1,168 @@
+<div class="container mt-3">
+  <div class="table-add-container d-flex flex-column w-100">
+    <button
+      class="btn btn-sm add-btn rounded-circle mb-2 align-self-end"
+      (click)="open(content)"
+    >
+      <i class="fa-solid fa-plus fw-bold"></i>
+    </button>
+
+    <table class="table rounded-corners" style="width: 100%">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 5%">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col" style="width: 10%">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (category of categoriesArray ; track $index){
+        <tr>
+          <th scope="row">{{ category.id }}</th>
+          <td>{{ category.name }}</td>
+          <td>
+            <!-- Delete Button -->
+            <button
+              class="btn btn-sm btn-trach border-0 mx-2"
+              (click)="deleteCategoryModal(category, deleteModal)"
+            >
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+            <!-- Edit Button -->
+            <button
+              class="btn btn-sm btn-edit border-0 mx-2"
+              (click)="editCategoryModal(category, editModal)"
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add Category</h4>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      ></button>
+    </div>
+
+    <div class="modal-body">
+      <form
+        [formGroup]="categoryForm"
+        (ngSubmit)="[getNewCateogrName(), modal.close('Save click')]"
+      >
+        <div class="mb-3">
+          <label for="newCategoryName" class="mb-2">Category Name:</label>
+          <div class="input-group">
+            <input
+              id="newCategoryName"
+              class="form-control"
+              placeholder="ex: Fantasy"
+              name="newCategoryName"
+              formControlName="newCategoryName"
+            />
+          </div>
+          @if(categoryForm.controls['newCategoryName'].invalid &&
+          categoryForm.controls['newCategoryName'].touched){
+          <div class="form-text text-danger">
+            @if(categoryForm.controls['newCategoryName'].errors?.['required']){
+            <small>Category name is required</small>
+            } @if(categoryForm.controls['newCategoryName'].errors?.['pattern']){
+            <small>Category name consists of letters only</small>
+            }
+            @if(categoryForm.controls['newCategoryName'].errors?.['maxlength']){
+            <small>Category name has max length of 20 letters only</small>
+            }
+          </div>
+          }
+        </div>
+        <div class="modal-footer">
+          <button
+            type="submit"
+            class="btn btn-outline-dark add-confirm-btn"
+            [disabled]="categoryForm.controls['newCategoryName'].invalid"
+          >
+            Add Category
+          </button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+
+  <!-- ------------edit---------------->
+
+  <ng-template #editModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Edit Category</h4>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      ></button>
+    </div>
+
+    <div class="modal-body">
+      <form [formGroup]="editCategoryForm" (ngSubmit)="updateCategory()">
+        <div class="mb-3">
+          <label for="editCategoryName" class="mb-2">Category Name:</label>
+          <div class="input-group">
+            <input
+              id="editCategoryName"
+              class="form-control"
+              name="editCategoryName"
+              formControlName="editCategoryName"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="submit"
+            class="btn btn-outline-dark add-confirm-btn"
+            [disabled]="editCategoryForm.controls['editCategoryName'].invalid"
+          >
+            Save Changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+  <!-- delete modal -->
+  <ng-template #deleteModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Delete Category</h4>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <p>Are you sure you want to delete this category?</p>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-outline-dark add-confirm-btn"
+        (click)="deleteCategory()"
+      >
+        Delete Category
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-dark add-confirm-btn"
+        (click)="modal.dismiss('Cross click')"
+      >
+        cancel
+      </button>
+    </div>
+  </ng-template>
+</div>

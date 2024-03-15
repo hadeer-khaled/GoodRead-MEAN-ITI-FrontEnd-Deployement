@@ -1,0 +1,82 @@
+a {
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+  font-weight: bolder;
+  color: rgb(25, 44, 80);
+}
+a:hover {
+  transition: color 0.2s ease-in-out;
+  color: rgb(224, 178, 76);
+}
+h2 {
+  text-align: center;
+  font-size: 100px;
+  font-size: 70px;
+  font-weight: 600;
+  background-image: linear-gradient(45deg, #143464, #3b5377);
+  /* background-image: radial-gradient(ellipse, #143464, #e41c77); */
+  /* background-image: radial-gradient(circle, #143464, #e41c77); */
+  background-size: 100% 100%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.outer-div {
+  /* border: 1px solid; */
+  justify-content: center;
+}
+.inner-div {
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.175);
+  /* border: 1px solid grey; */
+  /* padding: 0px 10px; */
+}
+/* img {
+  width: 100px;
+} */
+.card {
+  width: 100%;
+  border: none;
+  overflow: hidden;
+}
+.card-body {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+}
+
+:host ::ng-deep .ngb-pagination .pagination {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+:host ::ng-deep .ngb-pagination .pagination .page-item .page-link {
+  border-radius: 50% !important;
+  border: 1px solid var(--royal-green);
+  margin-right: 10px;
+}
+:host ::ng-deep .ngb-pagination .pagination li.active .page-link {
+  border-radius: 50% !important;
+  background-color: #ffc107 !important;
+  border: 1px solid #ffc107;
+  margin-right: 10px;
+}
+
+:host ::ng-deep .ngb-pagination .pagination .page-item .page-link span {
+  font-size: 1.2rem;
+}
+:host ::ng-deep .ngb-pagination .pagination .page-item:last-child .page-link,
+:host ::ng-deep .ngb-pagination .pagination .page-item:first-child .page-link {
+  background-color: var(--royal-green) !important;
+  border: 1px solid var(--royal-green);
+  color: white;
+}
+:host ::ng-deep .ngb-pagination .pagination li.disabled .page-link {
+  color: gray !important;
+}
+
+img {
+  width: 300px;
+  height: 200px;
+}

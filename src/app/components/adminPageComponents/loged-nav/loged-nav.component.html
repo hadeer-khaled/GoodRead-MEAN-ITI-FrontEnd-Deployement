@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary p-3">
+  <div class="container">
+    <div class="row">
+      <div class="col div">
+        <img src="../../../assets/images/logo2.png" alt="logo" />
+      </div>
+      <div class="col d-flex justify-content-end">
+        <div class="row">
+          <div class="col">
+            <div class="user">
+              <i class="fa-solid fa-circle-user"></i>
+              <span class="text-uppercase fw-bold"> {{ AdminLogged }} </span>
+              <button
+                class="btn d-inline-block logout-btn mx-2"
+                type="submit"
+                (click)="logOut()"
+              >
+                log Out
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

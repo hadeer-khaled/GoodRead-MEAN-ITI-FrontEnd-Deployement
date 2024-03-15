@@ -1,0 +1,182 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="container">
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-lg-12 col-xl-11">
+      <div class="card text-black">
+        <div class="card-body p-md-5">
+          <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-6 col-xl-5">
+              <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                Add Admin
+              </p>
+
+              <form
+                class="mx-1 mx-md-4"
+                [formGroup]="addAdminForm"
+                (ngSubmit)="handleFormSubmit()"
+              >
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <i class="fa fa-user fa-lg me-3 fa-fw"></i>
+                  <label class="form-label" for="form3Example1c"
+                    >first name</label
+                  >
+                  <div class="form-outline flex-fill mb-0">
+                    <input
+                      type="text"
+                      id="form3Example1c"
+                      class="form-control"
+                      formControlName="firstName"
+                    />
+                    @if(addAdminForm.controls['firstName'].invalid&&addAdminForm.controls['firstName'].touched)
+                    {
+                    <div class="form-text text-danger">
+                      @if(addAdminForm.controls['firstName'].errors?.['required']){
+                      <small> this field is required</small>
+                      }
+                      @if(addAdminForm.controls['firstName'].errors?.['pattern']){
+                      <small> this field should be without space </small>
+                      }
+                    </div>
+                    }
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <i class="fa fa-user fa-lg me-3 fa-fw"></i>
+                  <label class="form-label" for="form3Example1c"
+                    >last name</label
+                  >
+                  <div class="form-outline flex-fill mb-0">
+                    <input
+                      type="text"
+                      id="form3Example1c"
+                      class="form-control"
+                      formControlName="lastName"
+                    />
+                    @if(addAdminForm.controls['lastName'].invalid&&addAdminForm.controls['lastName'].touched)
+                    {
+                    <div class="form-text text-danger">
+                      @if(addAdminForm.controls['lastName'].errors?.['required']){
+                      <small> this field is required</small>
+                      }
+                      @if(addAdminForm.controls['lastName'].errors?.['pattern']){
+                      <small> this field should be without space </small>
+                      }
+                    </div>
+                    }
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <i class="fa fa-envelope fa-lg me-3 fa-fw"></i>
+                  <label class="form-label" for="form3Example3c">email</label>
+                  <div class="form-outline flex-fill mb-0">
+                    <input
+                      type="email"
+                      id="form3Example3c"
+                      class="form-control"
+                      formControlName="email"
+                    />
+
+                    @if(addAdminForm.controls['email'].invalid&&addAdminForm.controls['email'].touched)
+                    {
+                    <div class="form-text text-danger">
+                      @if(addAdminForm.controls['email'].errors?.['required']){
+                      <small> this field is required</small>
+                      } @if(addAdminForm.controls['email'].errors?.['email']){
+                      <small> this field should match email pattern</small>
+                      }
+                    </div>
+                    }
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <i class="fa fa-lock fa-lg me-3 fa-fw"></i>
+                  <label class="form-label" for="form3Example4c"
+                    >password</label
+                  >
+                  <div class="form-outline flex-fill mb-0">
+                    <input
+                      type="password"
+                      id="form3Example4c"
+                      class="form-control"
+                      formControlName="password"
+                    />
+
+                    @if(addAdminForm.controls['password'].invalid&&addAdminForm.controls['password'].touched)
+                    {
+                    <div class="form-text text-danger">
+                      @if(addAdminForm.controls['password'].errors?.['required']){
+                      <small> this field is required</small>
+                      }
+                      @if(addAdminForm.controls['password'].errors?.['pattern']){
+                      <small> this field should match password pattern</small>
+                      }
+                    </div>
+                    }
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <i class="fa fa-key fa-lg me-3 fa-fw"></i>
+                  <label class="form-label" for="form3Example4cd"
+                    >repassword</label
+                  >
+                  <div class="form-outline flex-fill mb-0">
+                    <input
+                      type="password"
+                      id="form3Example4cd"
+                      class="form-control"
+                      formControlName="rePassword"
+                    />
+                    @if(addAdminForm.controls['rePassword'].invalid&&addAdminForm.controls['rePassword'].touched)
+                    {
+                    <div class="form-text text-danger">
+                      @if(addAdminForm.controls['rePassword'].errors?.['required']){
+                      <small> this field is required</small>
+                      }
+                      @if(addAdminForm.controls['rePassword'].errors?.['pattern']){
+                      <small> this field should match password pattern</small>
+                      }
+                    </div>
+                    }
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                  <button
+                    routerLink="admin"
+                    type="submit"
+                    class="btn"
+                    type="submit"
+                    class="btn"
+                    [disabled]="
+                      !(
+                        addAdminForm.controls['firstName'].valid &&
+                        addAdminForm.controls['lastName'].valid &&
+                        addAdminForm.controls['email'].valid &&
+                        addAdminForm.controls['password'].valid &&
+                        addAdminForm.controls['rePassword'].valid
+                      )
+                    "
+                  >
+                    Add Admin
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div
+              class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
+            >
+              <img
+                src="https://cdni.iconscout.com/illustration/premium/thumb/admin-login-5146573-4297423.png"
+                class="img-fluid"
+                alt="Sample image"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

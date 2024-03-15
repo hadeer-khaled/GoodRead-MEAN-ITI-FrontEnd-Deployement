@@ -1,0 +1,55 @@
+<app-user-nav-bar></app-user-nav-bar>
+
+<div class="container mt-3">
+  <div class="row mb-5">
+    @for(book of books; track book.id) {
+    <div class="col-lg-4 col-md-6">
+      <div class="card" style="width: 18rem">
+        <div class="img-div">
+          <a>
+            <img
+              [src]="
+                'https://goodread-mean-iti-backendpart-3.onrender.com/images/books/' +
+                book.image
+              "
+              class="card-img-top"
+              alt="..."
+            />
+          </a>
+        </div>
+        <div class="card-body">
+          <div
+            class="d-flex flex-column align-items-center justify-content-center"
+          >
+            <h4 class="text-center">
+              <a
+                routerLink="/books/book/{{ book.id }}/{{ book.title }}"
+                class="card-title"
+                >{{ book.title }}</a
+              >
+            </h4>
+            <p>
+              <a
+                routerLink="/authors/author/{{ book.author._id }}/{{
+                  book.author.firstName + '' + book.author.lastName
+                }}"
+                >{{ book.author.firstName }} {{ book.author.lastName }}</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    }
+  </div>
+
+  <ngb-pagination
+    class="ngb-pagination"
+    [(page)]="currentPage"
+    [pageSize]="pageSize"
+    [collectionSize]="length"
+    (pageChange)="onPageChange($event)"
+    aria-label="Default pagination"
+  ></ngb-pagination>
+</div>

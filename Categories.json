@@ -1,0 +1,37 @@
+{
+  "Categories": [
+    {
+      "id": 1,
+      "categoryName": "Science Fiction",
+      "books": ["Dune", "Ender's Game", "The Hitchhiker's Guide to the Galaxy"]
+    },
+    {
+      "id": 2,
+      "categoryName": "Historical Fiction",
+      "books": [
+        "The Book Thief",
+        "All the Light We Cannot See",
+        "The Nightingale"
+      ]
+    },
+    {
+      "id": 3,
+      "categoryName": "Thriller",
+      "books": ["The Silent Patient", "The Girl on the Train", "Gone Girl"]
+    },
+    {
+      "id": 4,
+      "categoryName": "Fantasy",
+      "books": [
+        "The Lord of the Rings",
+        "Harry Potter and the Sorcerer's Stone",
+        "The Hobbit"
+      ]
+    },
+    {
+      "id": 5,
+      "categoryName": "Biography",
+      "books": ["Steve Jobs", "The Diary of a Young Girl", "Unbroken"]
+    }
+  ]
+}
